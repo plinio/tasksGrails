@@ -1,4 +1,4 @@
-package tasksgrails
+package tasksGrails
 
 class Task {
 
