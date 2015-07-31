@@ -61,3 +61,23 @@
 	
 </body>
 </html>
+<script>
+	$(document).ready(function() {
+		tasksController.init($('#taskPage'));
+		tasksController.loadTasks();	
+	});
+</script>
+<script id="taskRow" type="text/x-jQuery-tmpl">
+	<tr id="${id}">
+		<td>${task}</td>
+		<td><time datetime="${requiredBy}"> ${requiredBy}</time></td>
+		<td>${category}</td>
+		<td>
+			<nav>
+				<a href="#" class="editRow" data-task-id="${id}">Editar</a>
+				<a href="#" class="completeRow" data-task-id="${id}">Completar</a>
+				<a href="#" class="deleteRow" data-task-id="${id}">Deletar</a>
+			</nav>
+		</td>
+	</tr>
+	</script>

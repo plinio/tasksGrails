@@ -15,7 +15,7 @@
   		<asset:stylesheet src="02-tasks.css"/>
   		<!--<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>-->
-		<script src="jquery-2.1.4.min.js"></script>
+		<asset:javascript src="jquery-2.1.4.min.js"/>
 		<asset:javascript src="jquery.validate.js"/>
 		<asset:javascript src="date.js"/>
 		<asset:javascript src="jquery-tmpl.js"/>
