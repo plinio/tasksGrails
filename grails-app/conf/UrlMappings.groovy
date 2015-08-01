@@ -6,11 +6,10 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-        "/"(controller:"task", action:"index")
-        "/"(view:"/index")
+        "/"{
+            controller = "Task"
+            action = "index"
+        }
         "500"(view:'/error')
-
-        "/index/save"(controller:"task", action:"save")
-        "/index/delete"(controller:"task", action:"delete")
 	}
 }

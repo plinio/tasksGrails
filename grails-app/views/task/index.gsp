@@ -22,7 +22,7 @@
 		<section id="taskCreation" class="not">
 			<form id="taskForm">
 				<input type="hidden" name="id" />
-				<input type="hidden" name="completa" value=0 /> <!-- P4 - campo hidden para armazenar se a tarefa foi completada -->
+				<input type="hidden" name="completa" value="0" /> <!-- P4 - campo hidden para armazenar se a tarefa foi completada -->
 				<div>
 					<label>Tarefa</label> 
 					<input type="text" required="required" name="task" class="large" placeholder="Nome da tarefa" maxlength="200" />

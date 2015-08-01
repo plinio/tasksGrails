@@ -12,10 +12,6 @@ class TaskController {
 
 
     def list = {
-       /* def map = [:]
-            Task.findAll().each(){
-                map.put(it.id, it.toArray())
-            }*/
 
             def map = [:]
                         Task.findAll().each(){
@@ -24,13 +20,6 @@ class TaskController {
                     render(contentType: "text/json") {
                         map
                     }
-
-        /*def taskList = Task.list()
-        withFormat {
-            json {
-                render taskList as JSON
-            }
-        }*/
     }
 
 
@@ -44,7 +33,7 @@ class TaskController {
 
     def delete(){      
         def task = Task.get(params.id)
-        //task.delete(flush:true)
+        task.delete(flush:true)
         task.delete()
         render(contentType: "text/json") {
             task.toArray()
@@ -58,7 +47,7 @@ class TaskController {
         if (params.id == '') {
             task = new Task()
         }
-        task.completa = params.completa               
+        task.completa = Integer.parseInt(params.completa)
         task.task = params.task 
         task.category = category
         task.requiredBy = new Date().parse('yyyy-MM-dd',params.requiredBy)
