@@ -8,6 +8,15 @@
 <body>
 	<header>
 		<span>Lista de Tarefas</span>
+		<g:if env="development">
+		    We are in Development Mode
+		</g:if>
+		<g:if env="production">
+		    We are in Production Mode
+		</g:if>
+		<g:if env="test">
+		    We are in Test Mode
+		</g:if>
 	</header>
 	<main id="taskPage">
 		<section id="taskCreation" class="not">
@@ -24,8 +33,9 @@
 				<div>
 					<label>Categoria</label> 
 					<select name="category">
-						<option value="Pessoal">Pessoal</option>
-						<option value="Profissional">Profissional</option>
+						<g:each in="${categorias}">
+							<option value="${it.id}">${it.descricao}</option>		
+						</g:each>
 					</select>
 				</div>
 				<nav>
@@ -57,6 +67,20 @@
 				<a href="#" id="btnAddTask">Adicionar tarefa</a>
 			</nav>
 		</section>
+		<script id="taskRow" type="text/x-jQuery-tmpl">
+		<tr id="{{= id }}">
+		<td>{{= task }}</td>
+		<td><time datetime="{{= requiredBy }}"> {{= requiredBy }}</time></td>
+		<td>{{= category_desc }}</td>
+		<td>
+			<nav>
+				<a href="#" class="editRow" data-task-id="{{= id }}">Editar</a>
+				<a href="#" class="completeRow" data-task-id="{{= id }}">Completar</a>
+				<a href="#" class="deleteRow" data-task-id="{{= id }}">Deletar</a>
+			</nav>
+		</td>
+	</tr>
+	</script>
 		<script>
 			$(document).ready(function() {
 				tasksController.init($('#taskPage'));
@@ -68,17 +92,3 @@
 </body>
 </html>
 
-<script id="taskRow" type="text/x-jQuery-tmpl">
-	<tr id="${id}">
-		<td>${task}</td>
-		<td><time datetime="${requiredBy}"> ${requiredBy}</time></td>
-		<td>${category}</td>
-		<td>
-			<nav>
-				<a href="#" class="editRow" data-task-id="${id}">Editar</a>
-				<a href="#" class="completeRow" data-task-id="${id}">Completar</a>
-				<a href="#" class="deleteRow" data-task-id="${id}">Deletar</a>
-			</nav>
-		</td>
-	</tr>
-	</script>

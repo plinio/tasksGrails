@@ -1,5 +1,5 @@
 package tasksGrails
-
+import grails.converters.JSON
 class CategoriaController {
     static scaffold = true
 

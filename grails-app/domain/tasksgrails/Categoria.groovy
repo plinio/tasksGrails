@@ -3,7 +3,15 @@ package tasksGrails
 class Categoria {
 
     static constraints = {
+    	descricao(unique: true)
     }
 
-    String category
+    static mapping = {
+    	sort descricao: "asc"
+    }
+    String descricao
+
+    String toString(){
+    	return descricao
+    }
 }
