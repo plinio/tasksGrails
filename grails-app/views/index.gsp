@@ -57,16 +57,17 @@
 				<a href="#" id="btnAddTask">Adicionar tarefa</a>
 			</nav>
 		</section>
+		<script>
+			$(document).ready(function() {
+				tasksController.init($('#taskPage'));
+				tasksController.loadTasks();	
+			});
+		</script>
 	</main>
 	
 </body>
 </html>
-<script>
-	$(document).ready(function() {
-		tasksController.init($('#taskPage'));
-		tasksController.loadTasks();	
-	});
-</script>
+
 <script id="taskRow" type="text/x-jQuery-tmpl">
 	<tr id="${id}">
 		<td>${task}</td>

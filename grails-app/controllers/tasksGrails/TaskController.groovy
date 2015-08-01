@@ -27,9 +27,10 @@ class TaskController {
         }       
     }
 
-    def deletar(){      
+    def delete(){      
         def task = Task.get(params.id)
-        task.delete(flush:true)
+        //task.delete(flush:true)
+        task.delete()
         render(contentType: "text/json") {
             task.toArray()
         }
