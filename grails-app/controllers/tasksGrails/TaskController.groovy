@@ -1,5 +1,4 @@
 package tasksGrails
-import grails.converters.JSON
 
 class TaskController {
    def index() { 
