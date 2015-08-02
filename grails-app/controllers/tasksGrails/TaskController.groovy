@@ -6,11 +6,6 @@ class TaskController {
         [categorias: Categoria.findAll()]
     }
 
-    def add() {
-        
-    }
-
-
     def list = {
 
             def map = [:]
@@ -40,14 +35,20 @@ class TaskController {
         }
     }
 
-    def save(){     
+    def save(){   
+        def task    
         def category = Categoria.get(params.category)   
-        def task        
+              
         task = Task.get(params.id)
         if (params.id == '') {
             task = new Task()
         }
-        task.completa = Integer.parseInt(params.completa)
+        if(params.completa == ''){
+            task.completa = 0
+        }else {
+            task.completa = Integer.parseInt(params.completa)
+        }
+        
         task.task = params.task 
         task.category = category
         task.requiredBy = new Date().parse('yyyy-MM-dd',params.requiredBy)
