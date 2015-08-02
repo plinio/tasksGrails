@@ -26,6 +26,15 @@
 	</head>
 	<body>
 		<g:layoutBody/>
-		<footer>Você tem <span id="taskCount">0</span> tarefas</footer> 
+		<footer>Você tem <span id="taskCount">0</span> tarefas
+		<br> <g:if env="development">
+		    ambiente de desenvolvimento
+		</g:if>
+		<g:if env="production">
+		    ambiente de produção
+		</g:if>
+		<g:if env="test">
+		    ambiente de teste
+		</g:if></footer> 
 	</body>
 </html>

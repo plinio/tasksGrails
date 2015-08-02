@@ -8,15 +8,6 @@
 <body>
 	<header>
 		<span>Lista de Tarefas</span>
-		<g:if env="development">
-		    We are in Development Mode
-		</g:if>
-		<g:if env="production">
-		    We are in Production Mode
-		</g:if>
-		<g:if env="test">
-		    We are in Test Mode
-		</g:if>
 	</header>
 	<main id="taskPage">
 		<section id="taskCreation" class="not">
@@ -64,7 +55,9 @@
 				</tbody>
 			</table>
 			<nav>
+			<g:if test="${categorias != null && !categorias.isEmpty()}">
 				<a href="#" id="btnAddTask">Adicionar tarefa</a>
+			</g:if>
 				<a href="categoria/create" id="btnAddCat">Adicionar categoria</a>
 			</nav>
 		</section>
