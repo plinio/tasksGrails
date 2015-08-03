@@ -30,7 +30,7 @@ environments {
         }
     }
     production {
-
+      /*
       dataSource {
         dbCreate = "update"
         driverClassName = "org.postgresql.Driver"
@@ -42,8 +42,9 @@ environments {
         username = uri.userInfo.split(":")[0]
         password = uri.userInfo.split(":")[1]
     }
+    */
 
-      /*
+      
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
@@ -67,6 +68,6 @@ environments {
                jdbcInterceptors = "ConnectionState"
                defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
-        }*/
+        }
     }
 }
