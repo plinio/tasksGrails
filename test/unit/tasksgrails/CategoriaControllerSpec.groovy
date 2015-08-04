@@ -1,4 +1,5 @@
-package tasksgrails
+package tasksGrails
+
 
 
 import grails.test.mixin.*
@@ -6,7 +7,7 @@ import spock.lang.*
 
 @TestFor(CategoriaController)
 @Mock(Categoria)
-class CategoryControllerSpec extends Specification {
+class CategoriaControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -20,8 +21,8 @@ class CategoryControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.categoryInstanceList
-            model.categoryInstanceCount == 0
+            !model.categoriaInstanceList
+            model.categoriaInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -29,7 +30,7 @@ class CategoryControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.categoryInstance!= null
+            model.categoriaInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -37,25 +38,25 @@ class CategoryControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def category = new Category()
-            category.validate()
-            controller.save(category)
+            def categoria = new Categoria()
+            categoria.validate()
+            controller.save(categoria)
 
         then:"The create view is rendered again with the correct model"
-            model.categoryInstance!= null
+            model.categoriaInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            category = new Category(params)
+            categoria = new Categoria(params)
 
-            controller.save(category)
+            controller.save(categoria)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/category/show/1'
+            response.redirectedUrl == '/categoria/show/1'
             controller.flash.message != null
-            Category.count() == 1
+            Categoria.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -67,11 +68,11 @@ class CategoryControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def category = new Category(params)
-            controller.show(category)
+            def categoria = new Categoria(params)
+            controller.show(categoria)
 
         then:"A model is populated containing the domain instance"
-            model.categoryInstance == category
+            model.categoriaInstance == categoria
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -83,11 +84,11 @@ class CategoryControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def category = new Category(params)
-            controller.edit(category)
+            def categoria = new Categoria(params)
+            controller.edit(categoria)
 
         then:"A model is populated containing the domain instance"
-            model.categoryInstance == category
+            model.categoriaInstance == categoria
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -97,28 +98,28 @@ class CategoryControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/category/index'
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def category = new Category()
-            category.validate()
-            controller.update(category)
+            def categoria = new Categoria()
+            categoria.validate()
+            controller.update(categoria)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.categoryInstance == category
+            model.categoriaInstance == categoria
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            category = new Category(params).save(flush: true)
-            controller.update(category)
+            categoria = new Categoria(params).save(flush: true)
+            controller.update(categoria)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/category/show/$category.id"
+            response.redirectedUrl == "/categoria/show/$categoria.id"
             flash.message != null
     }
 
@@ -129,23 +130,23 @@ class CategoryControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/category/index'
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def category = new Category(params).save(flush: true)
+            def categoria = new Categoria(params).save(flush: true)
 
         then:"It exists"
-            Category.count() == 1
+            Categoria.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(category)
+            controller.delete(categoria)
 
         then:"The instance is deleted"
-            Category.count() == 0
-            response.redirectedUrl == '/category/index'
+            Categoria.count() == 0
+            response.redirectedUrl == '/categoria/index'
             flash.message != null
     }
 }
