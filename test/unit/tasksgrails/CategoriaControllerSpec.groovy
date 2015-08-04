@@ -4,8 +4,8 @@ package tasksgrails
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(CategoryController)
-@Mock(Category)
+@TestFor(CategoriaController)
+@Mock(Categoria)
 class CategoryControllerSpec extends Specification {
 
     def populateValidParams(params) {
