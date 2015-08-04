@@ -2,11 +2,11 @@ package tasksGrails
 
 class TaskController {
    def index() { 
-        def categorias = [:]
+        /*def categorias = [:]
         Categoria.findAll().each(){
             categorias.put(it.id, it.toString())
-        }
-        //[categorias: Categoria.findAll()]
+        }*/
+        [categorias: Categoria.findAll()]
     }
 
     def list = {
