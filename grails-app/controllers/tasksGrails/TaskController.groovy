@@ -1,5 +1,6 @@
 package tasksGrails
 
+@TestFor(Categoria)
 class TaskController {
    def index() { 
         [categorias: Categoria.findAll()]
